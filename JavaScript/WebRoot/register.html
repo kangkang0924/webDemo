@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>注册页面</title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf8">
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+</head>
+
+<body>
+	<form onsubmit="return checkInput();">
+		<table>
+			<tr>
+				<td>登录名:</td>
+				<td><input id="txtLoginName" type="text" placeholder="登录名" /></td>
+				<td><span id="spanLoginName" style="color:red ;">*</span>
+				</td>
+			</tr>
+			<tr>
+				<td>密码:</td>
+				<td><input id="txtPassword" type="password" placeholder="密码" /></td>
+				<td><span id="spanPassword" style="color:red ;">*</span>
+				</td>
+			</tr>
+			<tr>
+				<td>确认密码:</td>
+				<td><input id="txtRepassword" type="password" placeholder="确认密码" /></td>
+				<td><span id="spanRepassword" style="color:red ;">*</span>
+				</td>
+			</tr>
+			<tr>
+				<td>电子邮箱:</td>
+				<td><input id="txtEmail" type="email" placeholder="电子邮箱" /></td>
+				<td><span id="spanEmail" style="color:red ;">*</span>
+				</td>
+			</tr>
+			<tr>
+				<td>昵称:</td>
+				<td><input type="text" placeholder="昵称" />
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>出生日期:</td>
+				<td><input type="date" placeholder="日历" />
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>性别:</td>
+				<td><input type="radio" value="女" name="radSex" checked />女 
+				    <input type="radio" value="男" name="radSex" />男</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>爱好:</td>
+				<td><input type="checkbox" value="马术" />马术 
+				    <input type="checkbox" value="潜水" />潜水 
+				    <input type="checkbox" value="滑雪" />滑雪
+					<input type="checkbox" value="高尔夫" />高尔夫</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>兴趣:</td>
+				<td>
+				<select multiple>
+						<option value="绘画">绘画</option>
+						<option value="钢琴">钢琴</option>
+						<option value="阅读">阅读</option>
+				</select>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>电话号码:</td>
+				<td><input id="txtTelnumber" type="tel" placeholder="电话号码" /></td>
+				<td><span id="spanTelnumber" style="color:red ;">*</span>
+				</td>
+			</tr>
+			<tr>
+				<td>个人主页:</td>
+				<td><input type="url" placeholder="个人主页" /></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>个人简介:</td>
+				<td><textarea row="10" cols="30"></textarea></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>个人简历:</td>
+                    <td colspan="3" align="left">
+                    <button type="submit">选择文件</button>未选择任何文件
+                    </td>
+			</tr>
+			<tr>
+			       <td colspan="2" align="center">
+		           <input type="button" onclick="checkInput()" id="submit" value="注册" />
+				   <button type="reset">取消</button>
+					</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">是否已注册?去<a href="login.html">登录</a>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<script type="text/javascript">
+		function checkInput() {
+			var flag = true;
+			var txtLoginName = document.getElementById("txtLoginName");
+			var txtPassword = document.getElementById("txtPassword");
+			var txtEmail = document.getElementById("txtEmail");
+			var txtRepassword = document.getElementById("txtRepassword");
+            var txtTelnumber = document.getElementById("txtTelnumber");
+			var spanLoginName = document.getElementById("spanLoginName");
+			var spanPassword= document.getElementById("spanPassword");
+			var spanEmail = document.getElementById("spanEmail");
+			var spanRepassword = document.getElementById("spanRepassword");
+			var spanTelnumber = document.getElementById("spanTelnumber");
+            var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+            var pattern=/(^(([0\+]\d{2,3}-)?(0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$)|(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/;      
+			if(txtLoginName.value.length == 0){
+		  		spanLoginName.innerText="登录名不能为空！";
+		  		flag=false;
+		  	}
+		  	else if(txtLoginName.value.length < 6 ){
+		  		spanLoginName.innerText="登录名不能少于6个字符！";
+		  		flag=false;
+		  	}
+		  	else{
+		  		spanLoginName.innerText="*";
+		  	}
+		  	if (txtPassword.value.length == 0) {
+				spanPassword.innerText = "密码不能为空!";
+				flag = false;
+			}
+			else if(txtPassword.value.length < 6 ){
+		  	spanPassword.innerText="密码不能少于6个字符！";
+		  	flag=false;
+		  	}
+		  	else {
+				spanPassword.innerText = "*";
+			}
+			if (txtEmail.value.length == 0) {
+				spanEmail.innerText = "电子邮箱不能为空!";
+				flag = false;
+			} 
+			else if(!reg.test(txtEmail.value)){
+			spanEmail.innerText = "电子邮箱格式不对!";
+			}
+	          else {
+				spanEmail.innerText = "*";
+			}
+			var txtPassword = document.getElementById("txtPassword");
+			var txtRepassword = document.getElementById("txtRepassword");
+			if (txtPassword.value == txtRepassword.value) {
+				spanRepassword.innerText = "确认密码与密码一致!";
+			}
+			else {
+				spanRepassword.innerText = "确认密码与密码不一致!";
+				return flag;
+			}
+			if(txtRepassword.value.length == 0) {
+			        spanRepassword.innerText = "确认密码不能为空!";
+				    flag = false;
+			}	
+			if(pattern.test(txtTelnumber.value)){
+			spanTelnumber.innerText = "电话号码格式正确!";
+			flag = false;
+			}
+		  else if (txtTelnumber.value.length == 0) {
+				spanTelnumber.innerText = "电话号码不能为空!";
+				flag = false;
+			} 
+			else{
+				spanTelnumber.innerText = "电话号码格式错误!";
+			}
+			 reg = /^(?:(http|https|ftp):\/\/)?((?:[\w-]+\.)+[a-z1-9]+)((?:\/[^/?#]*)+)?(\?[^#]+)?(#.+)?$/i;
+       		if ($("#txtHomepage").val().length >0 && !reg.test($("#txtHomepage").val())){
+     	   $("#spanHomepage").text("个人主页格式有误!");
+     	   flag = false;
+       		}  else{
+       	     $("#spanHomepage").text("");
+       }      
+           
+        return flag;
+   }
+	</script>
+</body>
+</html>
